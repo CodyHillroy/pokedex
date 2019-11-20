@@ -59,14 +59,6 @@ nav {
   padding: 4px;
 }
 
-.item .types span {
-  font-size: 12px;
-  padding: 4px 6px;
-  border-radius: 2px;
-  margin-right: 8px;
-  background: rgb(189, 189, 189);
-}
-
 .details {
   position: sticky;
   top: 16px;

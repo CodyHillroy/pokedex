@@ -1,6 +1,7 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { showDetails } from '../actions/detailsActions';
+import { connect } from "react-redux";
+import { showDetails } from "../actions/detailsActions";
+import Type from "./Type";
 
 const Item = ({ pokemon, showDetails }) => {
   const { name, types, sprite, id } = pokemon;
@@ -10,15 +11,15 @@ const Item = ({ pokemon, showDetails }) => {
       <p className="name">{name}</p>
       <div className="types">
         {types.map(type => (
-          <span key={type}>{type}</span>
+          <Type key={type}>{type}</Type>
         ))}
       </div>
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  showDetails: (pokemon) => dispatch(showDetails(pokemon)),
-})
+const mapDispatchToProps = dispatch => ({
+  showDetails: pokemon => dispatch(showDetails(pokemon))
+});
 
 export default connect(null, mapDispatchToProps)(Item);

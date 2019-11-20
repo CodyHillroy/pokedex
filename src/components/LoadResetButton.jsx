@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 
 const LoadResetButton = ({ type, fetchingDataState, nextUrl, onClickAction }) => {
-  const title = type === 'load' ? 'Load more' : 'Reset filter options';
+  const title = type === 'load' ? 'Load more' : 'Reset filter';
   const isDisabled = fetchingDataState === 'request' || !nextUrl;
   return (
     <button className={`btn ${type}`} onClick={onClickAction} disabled={isDisabled} >

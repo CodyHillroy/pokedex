@@ -6,6 +6,6 @@ export const fetchingDataSuccess = () => ({
   type: 'FETCH_DATA_SUCCESS',
 });
 
-export const fetchingDataFailure = () => ({
+export const fetchingDataFailure = (message) => ({
   type: 'FETCH_DATA_FAILURE',
 });

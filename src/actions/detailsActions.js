@@ -1,4 +1,4 @@
-export const showDetails = (payload) => ({
+export const showDetails = (data) => ({
   type: 'DETAILS_SHOW',
-  payload,
+  data,
 });

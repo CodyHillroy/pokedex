@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-const pokemonsReducer = (state = [], { type, payload: pokemons }) => {
+const pokemonsReducer = (state = [], { type, pokemons }) => {
   switch (type) {
     case "POKEMONS_SET":
       return [...state, ...pokemons];
@@ -11,7 +11,7 @@ const pokemonsReducer = (state = [], { type, payload: pokemons }) => {
 
 const nextUrlReducer = (
   state = "http://pokeapi.co/api/v2/pokemon/?limit=12",
-  { type, payload: nextUrl }
+  { type, nextUrl }
 ) => {
   switch (type) {
     case "NEXT_URL_SET":
@@ -23,7 +23,7 @@ const nextUrlReducer = (
 
 const detailsReducer = (
   state = { isVisible: false, data: null },
-  { type, payload: data }
+  { type, data }
 ) => {
   switch (type) {
     case "DETAILS_SHOW":
@@ -35,12 +35,12 @@ const detailsReducer = (
   }
 };
 
-const filterReducer = (state = [], action) => {
-  switch (action.type) {
+const filterReducer = (state = [], { type, filterOption }) => {
+  switch (type) {
     case "FILTER_SET":
-      return state.includes(action.payload)
+      return state.includes(filterOption)
         ? state
-        : [...state, action.payload];
+        : [...state, filterOption];
     case "FILTER_RESET":
       return [];
     case "POKEMONS_ADD":
@@ -50,8 +50,8 @@ const filterReducer = (state = [], action) => {
   }
 };
 
-const fetchingReducer = (state = 'request', action) => {
-  switch (action.type) {
+const fetchingReducer = (state = 'request', { type }) => {
+  switch (type) {
     case 'FETCH_DATA_REQUEST':
       return 'request';
     case 'FETCH_DATA_SUCCESS':

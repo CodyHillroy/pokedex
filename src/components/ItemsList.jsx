@@ -4,17 +4,17 @@ import { connect } from "react-redux";
 import { resetAllFilters } from "../actions/filterActions";
 import { fetchPokemons } from "../actions/pokemonsActions";
 import filterSelector from "../selectors/filterSelector";
+import LoadResetButton from "./LoadResetButton";
 
 const ItemsList = ({
-  fetchingDataState,
   pokemons,
-  nextUrl,
   filterOptions,
   fetchPokemons,
   resetAllFilters
 }) => {
+
   useEffect(() => {
-    fetchPokemons(nextUrl);
+    fetchPokemons();
   }, []);
 
   return (
@@ -24,13 +24,9 @@ const ItemsList = ({
           <Item pokemon={pokemon} key={pokemon.name} />
         ))}
         {filterOptions.length ? (
-          <button className="btn reset" onClick={() => resetAllFilters()}>
-            Reset filter
-          </button>
+          <LoadResetButton type="reset" onClickAction={resetAllFilters} />
         ) : (
-          <button className="btn load" onClick={() => fetchPokemons(nextUrl)}>
-            Load more
-          </button>
+          <LoadResetButton type="load" onClickAction={fetchPokemons} />
         )}
       </div>
     </React.Fragment>
@@ -38,15 +34,13 @@ const ItemsList = ({
 };
 
 const mapStateToProps = state => ({
-  fetchingDataState: state.fetchingDataState,
   filterOptions: state.filterOptions,
   pokemons: filterSelector(state),
-  nextUrl: state.nextUrl,
 });
 
 const mapDispatchToProps = dispatch => ({
   resetAllFilters: () => dispatch(resetAllFilters()),
-  fetchPokemons: (nextUrl) => dispatch(fetchPokemons(nextUrl))
+  fetchPokemons: () => dispatch(fetchPokemons())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);

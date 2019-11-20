@@ -1,6 +1,6 @@
-export const setFilter = (payload) => ({
+export const setFilter = (filterOption) => ({
   type: 'FILTER_SET',
-  payload,
+  filterOption,
 });
 
 export const resetAllFilters = () => ({

@@ -1,5 +1,5 @@
 import axios from "axios";
-import capitalize from "lodash/capitalize";
+import extractDataFrom from "../extractDataFrom";
 
 import {
   fetchingDataRequest,
@@ -7,63 +7,30 @@ import {
   fetchingDataFailure
 } from "./fetchActions";
 
-export const setPokemons = payload => ({
+export const setPokemons = pokemons => ({
   type: "POKEMONS_SET",
-  payload
+  pokemons,
 });
 
-export const setNextUrl = payload => ({
+export const setNextUrl = nextUrl => ({
   type: "NEXT_URL_SET",
-  payload
+  nextUrl,
 });
 
-export const fetchPokemons = nextUrl => async dispatch => {
-
+export const fetchPokemons = () => async (dispatch, getState) => {
   try {
     dispatch(fetchingDataRequest());
+    const { nextUrl } = getState();
     const {
       data: { results: pokemons, next }
     } = await axios(nextUrl);
     const promises = pokemons.map(p => axios(p.url));
-  const results = await Promise.all(promises);
-  const extracted = results.map(r => {
-    const { id, name, weight, stats, types, moves, sprites } = r.data;
+    const results = await Promise.all(promises);
+    const extracted = extractDataFrom(results);
 
-    const extractedStats = stats.map(stat => {
-      const {
-        base_stat: value,
-        stat: { name }
-      } = stat;
-      return { name, value };
-    });
-
-    extractedStats.push(
-      { name: "moves", value: moves.length },
-      { name: "weight", value: weight }
-    );
-
-    const extractedTypes = types.map(type => {
-      const {
-        type: { name }
-      } = type;
-      return capitalize(name);
-    });
-
-    const sprite = sprites["front_default"];
-
-    return {
-      id,
-      name: capitalize(name),
-      sprite,
-      stats: extractedStats,
-      types: extractedTypes
-    };
-  });
-
-  dispatch(setPokemons(extracted));
-  dispatch(setNextUrl(next));
-  dispatch(fetchingDataSuccess());
-
+    dispatch(setPokemons(extracted));
+    dispatch(setNextUrl(next));
+    dispatch(fetchingDataSuccess());
   } catch (error) {
     dispatch(fetchingDataFailure(error.message));
   }

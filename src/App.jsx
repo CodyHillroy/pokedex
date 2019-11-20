@@ -8,9 +8,9 @@ import Details from "./components/Details";
 const App = ({ detailsVisibility }) => {
   return (
     <div className="app">
-      <nav>POKEDEX</nav>
+      <nav className="nav-panel">POKEDEX</nav>
       <ItemsList />
-      <div className="details-wrapper">{detailsVisibility && <Details />}</div>
+      {detailsVisibility && <Details />}
     </div>
   );
 };

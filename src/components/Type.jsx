@@ -16,9 +16,9 @@ const StyledSpan = styled.span`
   `}
 `;
 
-const Type = ({ children, setFilter }) => {
-  const color = typeColors[children.toLowerCase()];
-  return <StyledSpan color={color} onClick={() => setFilter(children)} className="filter-item">{children}</StyledSpan>;
+const Type = ({ children: type, setFilter }) => {
+  const color = typeColors[type.toLowerCase()];
+  return <StyledSpan color={color} onClick={() => setFilter(type)} className="filter-item">{type}</StyledSpan>;
 };
 
 const mapDispatchToProps = (dispatch) => ({

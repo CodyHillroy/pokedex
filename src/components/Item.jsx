@@ -6,10 +6,10 @@ import Type from "./Type";
 const Item = ({ pokemon, showDetails }) => {
   const { name, types, sprite } = pokemon;
   return (
-    <div className="item">
+    <div className="flex-column shadow poke-item">
       <img src={sprite} alt={name} onClick={() => showDetails(pokemon)}/>
-      <p className="name">{name}</p>
-      <div className="types">
+      <p className="poke-name">{name}</p>
+      <div className="poke-types">
         {types.map(type => (
           <Type key={type}>{type}</Type>
         ))}

@@ -1,10 +1,18 @@
 .app {
   display: grid;
   grid-template-columns: auto minmax(300px, 350px);
-  grid-template-rows: 60px auto;
 }
 
-nav {
+.shadow {
+  box-shadow: 0 2px 8px rgba(102,119,136, .01), 0 1px 2px rgba(102,119,136,.1);
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-panel {
   background: white;
   color: rgb(228, 52, 52);
   font-size: 28px;
@@ -13,50 +21,50 @@ nav {
   grid-column: 1/-1;
 }
 
-.content {
+.poke-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: minmax(auto, 250px);
   grid-gap: 16px;
   grid-row: 3;
   padding: 16px;
 }
 
-.item {
-  height: 300px;
-  /* background: rgb(228, 228, 228); */
+.poke-item {
+  height: 250px;
   background: white;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
+  padding: 24px;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(102,119,136, .01), 0 1px 2px rgba(102,119,136,.1);
   border-bottom: 2px solid white;
   transition: border 0.2s;
 }
 
-.item:hover {
+.poke-item:hover {
   border-bottom: 2px solid rgb(228, 52, 52);
 }
 
-
-.item img {
+.flex-column img {
   width: 100%;
-  height: 150px;
   flex-grow: 1;
   object-fit: contain;
 }
 
-.name {
+.poke-name {
   margin: 16px;
 }
 
-.details .name {
-  font-size: 24px;
+.poke-types {
+  margin: 4px;
 }
-.item .types {
-  padding: 4px;
+
+.poke-types span:hover {
+  cursor: pointer;
+}
+
+.poke-details .name {
+  margin-bottom: 16px;
+  font-size: 24px;
 }
 
 .details-wrapper {
@@ -64,82 +72,45 @@ nav {
   grid-column: 2;
 }
 
-.details {
+.poke-details {
   position: sticky;
   top: 16px;
   padding: 16px;
   margin: 16px 16px 16px 0;
-  /* background: rgb(228, 228, 228); */
   background: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(102,119,136, .01), 0 1px 2px rgba(102,119,136,.1);
 }
 
-.details img {
-  width: 100%;
+.poke-details img {
   height: 200px;
-  object-fit: contain;
 }
 
-table {
+.poke-details table {
   font-size: 14px;
   width: 100%;
-  border-collapse: collapse;
   text-align: center;
 }
 
-th {
-  color: #039;
-  border-bottom: 2px solid #6678b1;
-  padding: 10px 8px;
-}
-
-td {
-  color: #669;
+.poke-details table td {
+  color: rgb(55, 55, 128);
   padding: 9px 8px;
   width: 50%;
 }
 
-tr {
-  height: 40px;
+.btn {
+  color: white;
+  font-size: 24px;
+  height: 60px;
+  grid-row: auto;
+  grid-column: 1/-1;
 }
 
-.load_btn {
+.load {
   background: rgb(68, 68, 216);
-  color: white;
-  font-size: 24px;
-  height: 60px;
-  grid-row: auto;
-  grid-column: 1/-1;
 }
 
-.reset_btn {
+.reset {
   background: rgb(228, 52, 52);
-  color: white;
-  font-size: 24px;
-  height: 60px;
-  grid-row: auto;
-  grid-column: 1/-1;
-}
-
-.filter-panel {
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  grid-column: 1/-1;
-  background: rgb(223, 223, 223);
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.filter-item {
-  padding: 12px;
-}
-
-.filter-item:hover {
-  cursor: pointer;
 }

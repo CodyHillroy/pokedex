@@ -19,16 +19,16 @@ const ItemsList = ({
 
   return (
     <React.Fragment>
-      <div className="content">
+      <div className="poke-list">
         {pokemons.map(pokemon => (
           <Item pokemon={pokemon} key={pokemon.name} />
         ))}
         {filterOptions.length ? (
-          <button className="reset_btn" onClick={() => resetAllFilters()}>
+          <button className="btn reset" onClick={() => resetAllFilters()}>
             Reset filter
           </button>
         ) : (
-          <button className="load_btn" onClick={() => fetchPokemons(nextUrl)}>
+          <button className="btn load" onClick={() => fetchPokemons(nextUrl)}>
             Load more
           </button>
         )}

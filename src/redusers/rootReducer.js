@@ -27,8 +27,20 @@ const detailsReducer = (state = null, action) => {
   }
 }
 
+const filterReducer = (state = 'All', action) => {
+  switch (action.type) {
+    case 'FILTER_SET':
+      return state === 'All' ? [action.payload] : [...state, action.payload];
+    case 'POKEMONS_ADD':
+      return 'All';
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   pokemons: pokemonsReducer,
   nextUrl: nextUrlReducer,
   details: detailsReducer,
+  filterOption: filterReducer,
 });

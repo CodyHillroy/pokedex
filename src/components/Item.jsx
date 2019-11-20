@@ -4,10 +4,10 @@ import { showDetails } from "../actions/detailsActions";
 import Type from "./Type";
 
 const Item = ({ pokemon, showDetails }) => {
-  const { name, types, sprite, id } = pokemon;
+  const { name, types, sprite } = pokemon;
   return (
-    <div className="item" onClick={() => showDetails(pokemon)}>
-      <img src={sprite} alt={name} />
+    <div className="item">
+      <img src={sprite} alt={name} onClick={() => showDetails(pokemon)}/>
       <p className="name">{name}</p>
       <div className="types">
         {types.map(type => (

@@ -1,16 +1,28 @@
 import React from 'react';
-import { typeColors } from '../typecolors/typeColors';
-import styled, { css } from 'styled-components';
+import { connect } from 'react-redux';
+import { setFilter } from '../actions/filterActions';
+ 
+import { typeColors } from "../typecolors/typeColors";
+import styled, { css } from "styled-components";
 
-const Type = styled.span`
+const StyledSpan = styled.span`
   font-size: 12px;
   padding: 4px 6px;
   border-radius: 2px;
   margin-right: 8px;
   color: white;
   ${props => css`
-    background: rgb(${typeColors[props.children.toLowerCase()]});
+    background: rgb(${props.color});
   `}
 `;
 
-export default Type;
+const Type = ({ children, setFilter }) => {
+  const color = typeColors[children.toLowerCase()];
+  return <StyledSpan color={color} onClick={() => setFilter(children)} className="filter-item">{children}</StyledSpan>;
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  setFilter: (type) => dispatch(setFilter(type)),
+});
+
+export default connect(null, mapDispatchToProps)(Type);

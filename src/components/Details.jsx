@@ -1,11 +1,11 @@
 import React from "react";
 
-const Details = ({ activeStats }) => {
-  const [spriteImg, types, stats, name] = activeStats;
+const Details = ({ details }) => {
+  const { sprite, name, id, stats, types, moves, weight } = details;
   return (
     <aside className="details">
-      <img src={spriteImg} alt="img" />
-      <p className="name">{name}</p>
+      <img src={sprite} alt={name} />
+      <p className="name">{`${name} #${id}`}</p>
       <table>
         <thead>
           <tr>
@@ -18,12 +18,6 @@ const Details = ({ activeStats }) => {
             <td>Type</td>
             <td>{types.join(", ")}</td>
           </tr>
-          {stats.map(stat => (
-            <tr>
-              <td>{stat.name}</td>
-              <td>{stat.value}</td>
-            </tr>
-          ))}
         </tbody>
       </table>
     </aside>

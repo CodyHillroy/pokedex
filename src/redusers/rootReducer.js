@@ -1,50 +1,72 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-const pokemonsReducer = (state = [], action) => {
-  switch (action.type) {
-    case 'POKEMONS_SET':
-      return [...state, ...action.payload];
+const pokemonsReducer = (state = [], { type, payload: pokemons }) => {
+  switch (type) {
+    case "POKEMONS_SET":
+      return [...state, ...pokemons];
     default:
       return state;
   }
 };
 
-const nextUrlReducer = (state = 'http://pokeapi.co/api/v2/pokemon/?limit=12', action) => {
-  switch (action.type) {
-    case 'NEXT_URL_SET':
-      return action.payload;
+const nextUrlReducer = (
+  state = "http://pokeapi.co/api/v2/pokemon/?limit=12",
+  { type, payload: nextUrl }
+) => {
+  switch (type) {
+    case "NEXT_URL_SET":
+      return nextUrl;
     default:
       return state;
   }
 };
 
-const detailsReducer = (state = null, action) => {
-  switch (action.type) {
-    case 'DETAILS_SHOW':
-      return action.payload;
-    case 'FILTER_SET':
-      return null;
+const detailsReducer = (
+  state = { isVisible: false, data: null },
+  { type, payload: data }
+) => {
+  switch (type) {
+    case "DETAILS_SHOW":
+      return { isVisible: true, data };
+    case "FILTER_SET":
+      return { isVisible: false, data: null };
     default:
       return state;
   }
-}
+};
 
-const filterReducer = (state = 'All', action) => {
+const filterReducer = (state = [], action) => {
   switch (action.type) {
-    case 'FILTER_SET':
-      return state === 'All' ? [action.payload] : [...state, action.payload];
-    case 'FILTER_RESET':
-      return 'All';
-    case 'POKEMONS_ADD':
-      return 'All';
+    case "FILTER_SET":
+      return state.includes(action.payload)
+        ? state
+        : [...state, action.payload];
+    case "FILTER_RESET":
+      return [];
+    case "POKEMONS_ADD":
+      return [];
+    default:
+      return state;
+  }
+};
+
+const fetchingReducer = (state = 'request', action) => {
+  switch (action.type) {
+    case 'FETCH_DATA_REQUEST':
+      return 'request';
+    case 'FETCH_DATA_SUCCESS':
+      return 'success';
+    case 'FETCH_DATA_FAILURE':
+      return 'failure';
     default:
       return state;
   }
 }
 
 export default combineReducers({
+  fetchingDataState: fetchingReducer,
   pokemons: pokemonsReducer,
   nextUrl: nextUrlReducer,
   details: detailsReducer,
-  filterOption: filterReducer,
+  filterOptions: filterReducer
 });

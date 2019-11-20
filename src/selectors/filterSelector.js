@@ -1,5 +1,7 @@
-export default (state, types) => {
-  return types === 'All' ? state : state.filter(item => {
-    return types.every(type => item.types.includes(type));
-  })
+export default ({ pokemons, filterOptions }) => {
+  return filterOptions.length
+    ? pokemons.filter(poke => {
+        return filterOptions.every(opt => poke.types.includes(opt));
+      })
+    : pokemons;
 };

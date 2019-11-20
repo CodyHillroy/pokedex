@@ -1,7 +1,8 @@
 import React from "react";
+import { connect } from 'react-redux';
 
-const Details = ({ details }) => {
-  const { sprite, name, id, stats, types } = details;
+const Details = ({ detailsData }) => {
+  const { sprite, name, id, stats, types } = detailsData;
   console.log(stats);
   return (
     <aside className="details">
@@ -14,7 +15,7 @@ const Details = ({ details }) => {
             <td>{types.join(" - ")}</td>
           </tr>
           {stats.map(s => (
-            <tr>
+            <tr key={s.name}>
               <td>{s.name}</td>
               <td>{s.value}</td>
             </tr>
@@ -25,4 +26,9 @@ const Details = ({ details }) => {
   );
 };
 
-export default Details;
+
+const mapStateToProps = (state) => ({
+  detailsData: state.details.data,
+});
+
+export default connect(mapStateToProps)(Details);

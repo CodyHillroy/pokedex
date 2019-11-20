@@ -1,6 +1,7 @@
 export const typeColors = {
   normal: "159, 159, 107",
   fighting: "185, 32, 24",
+  fairy: "248, 166, 255",
   flying: "159, 132, 238",
   poison: "150, 48, 150",
   ground: "220, 185, 90",

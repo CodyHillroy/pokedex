@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const pokemonsReducer = (state = [], action) => {
   switch (action.type) {
-    case 'POKEMONS_ADD':
+    case 'POKEMONS_SET':
       return [...state, ...action.payload];
     default:
       return state;
@@ -22,6 +22,8 @@ const detailsReducer = (state = null, action) => {
   switch (action.type) {
     case 'DETAILS_SHOW':
       return action.payload;
+    case 'FILTER_SET':
+      return null;
     default:
       return state;
   }
@@ -31,6 +33,8 @@ const filterReducer = (state = 'All', action) => {
   switch (action.type) {
     case 'FILTER_SET':
       return state === 'All' ? [action.payload] : [...state, action.payload];
+    case 'FILTER_RESET':
+      return 'All';
     case 'POKEMONS_ADD':
       return 'All';
     default:

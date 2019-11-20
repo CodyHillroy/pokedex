@@ -1,7 +1,12 @@
 import axios from 'axios';
 import capitalize from 'lodash/capitalize';
 
-export const addPokemons = (nextUrl) => async (dispatch) => {
+export const setPokemons = (payload) => ({
+  type: 'POKEMONS_SET',
+  payload,
+});
+
+export const fetchPokemons = (nextUrl) => async (dispatch) => {
   const { data: { results: pokemons, next } } = await axios(nextUrl);
   const promises = pokemons.map(p => axios(p.url));
   const results = await Promise.all(promises);
@@ -10,10 +15,10 @@ export const addPokemons = (nextUrl) => async (dispatch) => {
 
     const extractedStats = stats.map(stat => {
       const { base_stat: value, stat: { name } } = stat;
-      return { [name]: value };
+      return { name, value };
     })
 
-    extractedStats.push({ moves: moves.length }, { weight })
+    extractedStats.push({ name: 'moves',  value: moves.length }, { name: "weight", value: weight })
 
     const extractedTypes = types.map(type => {
       const { type: { name } } = type;
@@ -25,10 +30,7 @@ export const addPokemons = (nextUrl) => async (dispatch) => {
     return {id, name: capitalize(name), sprite, stats: extractedStats, types: extractedTypes};
   });
   
-  dispatch({
-    type: 'POKEMONS_ADD',
-    payload: extracted,
-  });
+  dispatch(setPokemons(extracted));
 
   dispatch({
     type: 'NEXT_URL_SET',

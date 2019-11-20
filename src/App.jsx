@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { connect } from 'react-redux';
-import { addPokemons } from './actions/pokemonsActions';
+import { fetchPokemons } from './actions/pokemonsActions';
 import filterSelector from './selectors/filterSelector';
 
 import ItemsList from "./components/ItemsList";
 import Details from './components/Details';
-import FilterPanel from "./components/FilterPanel";
 
 // http://pokeapi.co/api/v2/pokemon/?limit=12
 
-const App = ({ pokemons, nextUrl, details, filterOption, addPokemons }) => {
+const App = ({ pokemons, nextUrl, details, filterOption, fetchPokemons }) => {
   useEffect(() => {
-    addPokemons(nextUrl);
+    fetchPokemons(nextUrl);
   }, []);
 
   const filteredPokemons = filterSelector(pokemons, filterOption);
@@ -20,8 +19,7 @@ const App = ({ pokemons, nextUrl, details, filterOption, addPokemons }) => {
   return (
     <div className="app">
       <nav>POKEDEX</nav>
-      <FilterPanel />
-      {filteredPokemons.length ? <ItemsList pokemons={filteredPokemons} nextUrl={nextUrl} addPokemons={addPokemons}/> : <p>Loading</p>}
+      {filteredPokemons.length ? <ItemsList pokemons={filteredPokemons} nextUrl={nextUrl} fetchPokemons={fetchPokemons}/> : <p>Loading</p>}
       <div className="details-wrapper">
         {details && <Details details={details} />}
       </div>
@@ -37,7 +35,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addPokemons: (nextUrl) => dispatch(addPokemons(nextUrl))
+  fetchPokemons: (nextUrl) => dispatch(fetchPokemons(nextUrl))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

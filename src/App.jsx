@@ -10,6 +10,7 @@ import axios from "axios";
 const App = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const [nextUrl, setNextUrl] = useState('http://pokeapi.co/api/v2/pokemon/?limit=12');
+  const [activeStats, setActiveStats] = useState(null);
 
   useEffect(() => { 
     fetchData();
@@ -21,11 +22,18 @@ const App = () => {
     setNextUrl(next);
   }
 
+  const showStats = (...args) => {
+    setActiveStats(args);
+  }
+
   return (
     <div className="app">
-      <nav>Pokedex</nav>
-      {pokemonList.length ? <ItemsList pokemonList={pokemonList} fetchData={fetchData} /> : <p>Loading</p>}
-      <Details />
+      <nav>POKEDEX</nav>
+      {pokemonList.length ? <ItemsList pokemonList={pokemonList} fetchData={fetchData} showStats={showStats} /> : <p>Loading</p>}
+      <div>
+        {activeStats && <Details activeStats={activeStats} />}
+      </div>
+      
     </div>
   );
 };

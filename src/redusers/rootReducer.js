@@ -10,7 +10,7 @@ const pokemonsReducer = (state = [], { type, pokemons }) => {
 };
 
 const nextUrlReducer = (
-  state = "http://pokeapi.co/api/v2/pokemon/?limit=12",
+  state = "https://pokeapi.co/api/v2/pokemon/?limit=12",
   { type, nextUrl }
 ) => {
   switch (type) {

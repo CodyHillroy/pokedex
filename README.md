@@ -20,13 +20,13 @@ Powered by React, Redux.
   
 ## Usage
 
-The first time you run Pokedex, it will show few cards which represent pokemons. Each card includes short information   about specific pokemon (image, name and type). 
+The first time you run Pokedex, it will show few cards which represents pokemons. Each card includes short information   about specific pokemon (image, name and type). 
  
  - If you need more cards, just click the "Load more" button below.
  - Clicking on any card image will show details on that specific pokemon.
 
 Pokedex also allows you to __filter visible pokemons by type__:
- * Click on type tag under pokemon name to activate filter.
+ * Click type tag under pokemon name to activate filter.
  * Clicking on any tag type again, will add that type to filter options.
  * Click "Reset filter" button to reset filter. [Thanks cap!]
  

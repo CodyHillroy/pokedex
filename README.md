@@ -16,7 +16,7 @@ Powered by React, Redux.
   $ npm start
   ```
  In case of any problem, use [Help](https://help.github.com/en/github).
- __You can also use this [Demo](https://codyhillroy.github.io/pokedex/)__
+ __or use this [Demo](https://codyhillroy.github.io/pokedex/)__
   
 ## Usage
 

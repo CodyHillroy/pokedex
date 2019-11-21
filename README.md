@@ -20,7 +20,7 @@ Powered by React, Redux.
   
 ## Usage
 
-The first time you run Pokedex, it will download few cards which represent pokemons. Each card includes short information   about specific pokemon (image, name and type). 
+The first time you run Pokedex, it will show few cards which represent pokemons. Each card includes short information   about specific pokemon (image, name and type). 
  
  - If you need more cards, just click the "Load more" button below.
  - Clicking on any card image will show details on that specific pokemon.

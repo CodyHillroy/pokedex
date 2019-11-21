@@ -28,6 +28,6 @@ The first time you run Pokedex, it will download few cards which represent pokem
 Pokedex also allows you to __filter visible pokemons by type__:
  * Click on type tag under pokemon name to activate filter.
  * Clicking on any tag type again, will add that type to filter options.
- * Click "Reset filter" to reset filter. [Thanks cap!]
+ * Click "Reset filter" button to reset filter. [Thanks cap!]
  
  So enjoy it and __Catch 'Em All!__

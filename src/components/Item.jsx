@@ -7,7 +7,7 @@ const Item = ({ pokemon, showDetails }) => {
   const { name, types, sprite } = pokemon;
   return (
     <div className="flex-column shadow poke-item">
-      <img src={sprite} alt={name} onClick={() => showDetails(pokemon)}/>
+      <img src={sprite} alt={name} onClick={() => showDetails(pokemon)} />
       <p className="poke-name">{name}</p>
       <div className="poke-types">
         {types.map(type => (

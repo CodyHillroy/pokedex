@@ -16,7 +16,7 @@ const App = ({ detailsVisibility }) => {
 };
 
 const mapStateToProps = state => ({
-  detailsVisibility: state.details.isVisible,
+  detailsVisibility: state.details.isVisible
 });
 
 export default connect(mapStateToProps)(App);

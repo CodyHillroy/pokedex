@@ -1,7 +1,7 @@
 import capitalize from "lodash/capitalize";
 
 // I know that all code below is garbage. Forgive me!
-export default (data) => {
+export default data => {
   return data.map(r => {
     const { id, name, weight, stats, types, moves, sprites } = r.data;
 
@@ -10,7 +10,10 @@ export default (data) => {
         base_stat: value,
         stat: { name }
       } = stat;
-      const capitalizedName = name.split('-').map(n => capitalize(n)).join(' ');
+      const capitalizedName = name
+        .split("-")
+        .map(n => capitalize(n))
+        .join(" ");
       return { name: capitalizedName, value };
     });
 
@@ -36,4 +39,4 @@ export default (data) => {
       types: extractedTypes
     };
   });
-}
+};

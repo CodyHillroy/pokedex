@@ -12,7 +12,6 @@ const ItemsList = ({
   fetchPokemons,
   resetAllFilters
 }) => {
-
   useEffect(() => {
     fetchPokemons();
   }, []);
@@ -35,7 +34,7 @@ const ItemsList = ({
 
 const mapStateToProps = state => ({
   filterOptions: state.filterOptions,
-  pokemons: filterSelector(state),
+  pokemons: filterSelector(state)
 });
 
 const mapDispatchToProps = dispatch => ({

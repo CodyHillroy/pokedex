@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 
 const Details = ({ detailsData }) => {
   const { sprite, name, id, stats, types } = detailsData;
-  console.log(stats);
+
   return (
-    <div className="details-wrapper">
+    <div className="poke-details-wrapper">
       <aside className="shadow poke-details">
         <img src={sprite} alt={name} />
         <p className="name">{`${name} #${id}`}</p>

@@ -1,4 +1,4 @@
-export const showDetails = (data) => ({
-  type: 'DETAILS_SHOW',
-  data,
+export const showDetails = data => ({
+  type: "DETAILS_SHOW",
+  data
 });

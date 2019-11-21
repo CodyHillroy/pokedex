@@ -9,12 +9,7 @@ import {
 
 export const setPokemons = pokemons => ({
   type: "POKEMONS_SET",
-  pokemons,
-});
-
-export const setNextUrl = nextUrl => ({
-  type: "NEXT_URL_SET",
-  nextUrl,
+  pokemons
 });
 
 export const fetchPokemons = () => async (dispatch, getState) => {
@@ -32,6 +27,11 @@ export const fetchPokemons = () => async (dispatch, getState) => {
     dispatch(setNextUrl(next));
     dispatch(fetchingDataSuccess());
   } catch (error) {
-    dispatch(fetchingDataFailure(error.message));
+    dispatch(fetchingDataFailure());
   }
 };
+
+export const setNextUrl = nextUrl => ({
+  type: "NEXT_URL_SET",
+  nextUrl
+});

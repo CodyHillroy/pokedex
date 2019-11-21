@@ -38,9 +38,7 @@ const detailsReducer = (
 const filterReducer = (state = [], { type, filterOption }) => {
   switch (type) {
     case "FILTER_SET":
-      return state.includes(filterOption)
-        ? state
-        : [...state, filterOption];
+      return state.includes(filterOption) ? state : [...state, filterOption];
     case "FILTER_RESET":
       return [];
     case "POKEMONS_ADD":
@@ -50,18 +48,18 @@ const filterReducer = (state = [], { type, filterOption }) => {
   }
 };
 
-const fetchingReducer = (state = 'request', { type }) => {
+const fetchingReducer = (state = "request", { type }) => {
   switch (type) {
-    case 'FETCH_DATA_REQUEST':
-      return 'request';
-    case 'FETCH_DATA_SUCCESS':
-      return 'success';
-    case 'FETCH_DATA_FAILURE':
-      return 'failure';
+    case "FETCH_DATA_REQUEST":
+      return "request";
+    case "FETCH_DATA_SUCCESS":
+      return "success";
+    case "FETCH_DATA_FAILURE":
+      return "failure";
     default:
       return state;
   }
-}
+};
 
 export default combineReducers({
   fetchingDataState: fetchingReducer,

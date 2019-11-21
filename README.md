@@ -15,7 +15,7 @@ Powered by React, Redux.
   ```bash
   $ npm start
   ```
- In case of any problem, use [Help](https://help.github.com/en/github).
+ In case of any problem, use [Help](https://help.github.com/en/github) 
  __or use this [Demo](https://codyhillroy.github.io/pokedex/)__
   
 ## Usage
